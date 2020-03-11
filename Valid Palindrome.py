@@ -18,8 +18,7 @@ class Solution:
         
         #remove any punctuation
         def removePunct(inp):
-            punc = [',', '?', ':', ' ', '!','.','@']
-
+            punc = [',', '?', ':',';', ' ', '!','.','@','#','$','*','&','%','-','\\','\"','\'',')','(','`','~','+','=','^']
             if(inp in punc):
                 return False
             else:
