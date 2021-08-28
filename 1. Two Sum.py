@@ -31,4 +31,4 @@ class Solution:
        for i in range(len(nums)):
             fix_ele = nums[i]
             if target-fix_ele in nums[i+1:]:
-                return [i,nums.index(target-fix_ele)]
+                return [i,i+nums[i+1:].index(target-fix_ele)+1]
