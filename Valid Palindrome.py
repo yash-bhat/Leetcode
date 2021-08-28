@@ -15,27 +15,6 @@ Output: false
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        
-        #remove any punctuation
-        def removePunct(inp):
-            punc = [',', '?', ':',';', ' ', '!','.','@','#','$','*','&','%','-','\\','\"','\'',')','(','`','~','+','=','^']
-            if(inp in punc):
-                return False
-            else:
-                returan True
-
-        s = list(filter(removePunct, s))
-        s = "".join(map(str,s))
-        
-        print(s)
-        
-        if s.lower() == s[::-1].lower():
-            return 1
-        else:
-            return 0"""
-
-class Solution:
-    def isPalindrome(self, s: str) -> bool:
         puncs = set(string.punctuation)
         puncs.add(" ")
         
@@ -48,6 +27,18 @@ class Solution:
         filtered_s = list(filter(check_alphabet,s))
         s = ("".join(filtered_s)).lower()
         # print(s)
+        
+        
+        if s==s[::-1]:
+            return True
+        else:
+            return False
+            
+        #OR
+        
+        import re
+        s = s.lower()
+        s = re.sub('[\W_]+','',s)
         
         
         if s==s[::-1]:
