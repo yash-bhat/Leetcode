@@ -24,3 +24,11 @@ class Solution:
             if (comple in dict.keys()):
                 if (i != dict[comple]):
                     return [i,dict[comple]]
+                
+                
+       #ANOTHER SOLUTION
+    
+       for i in range(len(nums)):
+            fix_ele = nums[i]
+            if target-fix_ele in nums[i+1:]:
+                return [i,nums.index(target-fix_ele)]
