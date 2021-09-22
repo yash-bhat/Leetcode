@@ -52,7 +52,7 @@ class Solution:
         
         for i in range(len(nums)-1):
             print(m,res)
-            if nums[i] > nums[i+1]:
+            if nums[i] >= nums[i+1]:
                 res.append(m+nums[i])
                 m = 0
             else:
