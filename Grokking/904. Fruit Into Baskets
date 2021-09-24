@@ -57,7 +57,7 @@ class Solution:
         minimum = n-1
         res = 0
             
-        while r < n:
+        for r in range(n):
             track[nums[r]] = r
                 
             if len(track) > 2:
@@ -65,7 +65,6 @@ class Solution:
                 track = {k:v for k, v in track.items() if v!=l-1}
                 
             res = max(res,r-l+1)
-            r += 1
                               
                               
         return res
