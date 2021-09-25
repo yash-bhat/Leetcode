@@ -20,7 +20,7 @@
 # intervals[i].length == 2
 # 0 <= starti <= endi <= 104
 
-
+# Lengthy approach - sorting - Olog(n) * n
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         
@@ -48,3 +48,20 @@ class Solution:
                 i += 1
                 
         return intervals
+        
+# concise - sorting - Olog(n) * n       
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        
+        intervals = sorted(intervals)
+        res = []
+        
+        for interval in intervals:
+            if not res or res[-1][1] < interval[0]:
+                res.append(interval)
+                
+            else:
+                res[-1][1] = max(res[-1][1],interval[1])
+                
+                
+        return res
