@@ -58,3 +58,36 @@ class Solution:
         
         DFS(root,0)
         return levels
+       
+       
+
+# LEVEL BY LEVEL TRAVERSAL USING QUEUE IS A BFS APPROACH
+from collections import deque
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        
+        levels = [] #result
+        
+        if not root: # check if tree empty
+            return levels
+        
+        queue = deque([root,])
+        level = 0
+        
+        while queue:
+            # start the level array
+            levels.append([])
+            
+            for i in range(len(queue)):
+                node = queue.popleft() # get node from start of Q 
+                
+                levels[level].append(node.val) # add node val in level
+                
+                if node.left: # left tree from pop
+                    queue.append(node.left)
+                if node.right: # right tree from pop
+                    queue.append(node.right)
+                    
+            level += 1
+                
+        return levels
