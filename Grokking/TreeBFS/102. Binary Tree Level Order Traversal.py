@@ -28,6 +28,9 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
+# RECURSION HERE IS A DFS APPROACH
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         
@@ -37,7 +40,7 @@ class Solution:
             return levels
         
         
-        def bfs(node,level): # breadth first search
+        def DFS(node,level): # breadth first search
             
             if len(levels) == level:
                 levels.append([])
@@ -47,11 +50,11 @@ class Solution:
             levels[level].append(node.val)
             
             if node.left: # left tree
-                bfs(node.left,level+1)
+                DFS(node.left,level+1)
             
             if node.right: # right tree
-                bfs(node.right,level+1)
+                DFS(node.right,level+1)
         
         
-        bfs(root,0)
+        DFS(root,0)
         return levels
