@@ -27,34 +27,32 @@ Given a string s, return the longest palindromic substring in s.
 # s consist of only digits and English letters.
 
 
-
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        
-        if s==s[::-1] or len(s) == 1:
-            return s
-        
-        if s=='' or len(s)==0:
-            return ''
-        
-        start = end = 0
-        
-        def expandonCenter(s,L,R):
-            while(L>=0 and R<len(s) and s[L]==s[R]):
-                L -= 1
-                R += 1
-            return R-L-1
-            
-            
+
+        res = ''
+        resL = 0
+
         for i in range(len(s)):
-            len1 = expandonCenter(s,i,i)
-            len2 = expandonCenter(s,i,i+1)
-            l = max(len1,len2)
-            if (l>end-start):
-                start = i - (l-1)//2
-                end = i + l//2
-                
-        return s[start:end+1]
-        
-        
-        
+
+            # odd length
+            l, r = i, i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resL:
+                    res = s[l:r + 1]
+                    resL = r - l + 1
+
+                l -= 1
+                r += 1
+
+            # even length
+            l, r = i, i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resL:
+                    res = s[l:r + 1]
+                    resL = r - l + 1
+
+                l -= 1
+                r += 1
+
+        return res
