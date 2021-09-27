@@ -46,18 +46,18 @@
 
 class Solution:
     def maxAscendingSum(self, nums: List[int]) -> int:
-        
-        m = 0
-        res = []
-        
-        for i in range(len(nums)-1):
-            print(m,res)
-            if nums[i] >= nums[i+1]:
-                res.append(m+nums[i])
-                m = 0
+        n = len(nums)
+        res = 0
+
+        for i in range(n):
+            if i == 0:
+                curr_sum = nums[i]
+            elif nums[i - 1] < nums[i]:
+                curr_sum += nums[i]
             else:
-                m += nums[i]
-                
-        res.append(m+nums[-1])
-        return max(res)
+                curr_sum = nums[i]
+
+            res = max(res, curr_sum)
+
+        return res
         
