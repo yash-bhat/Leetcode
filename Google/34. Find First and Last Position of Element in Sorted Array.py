@@ -35,7 +35,7 @@ class Solution:
         res = []
         found_l, found_r = 0, 0
 
-        while l <= r:
+        while l <= r: # check equal if one occurence of target
 
             if nums[l] == target and not found_l:
                 res = [l] + res
@@ -53,8 +53,5 @@ class Solution:
 
             if not found_r:
                 r -= 1
-
-        if len(res) == 1:
-            return [0, 0]
 
         return [-1, -1]
