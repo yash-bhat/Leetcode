@@ -29,28 +29,27 @@
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
 
+
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) == 0:
-            return 0
 
-        if len(s) == 1:
-            return 1
+        i = 0
+        subs = []
+        res = 0
 
-        l = 0
-        r = 1
-        subs = s[l:r]
-        leng = 0
+        while i < len(s):
 
-        while r < len(s):
-            if s[r] in subs:
-                while (s[l] != s[r]):
-                    l += 1
-                l += 1
-                subs = s[l:r]
+            # if s[i] in subs, remove from left till one left
+            while s[i] in subs and len(subs) > 1:
+                del subs[0]
 
-            subs += s[r]
-            leng = max(leng, r - l + 1)
-            r += 1
+            if s[i] not in subs:
+                subs.append(s[i])
 
-        return leng
+            res = max(res, len(subs))
+
+            i += 1
+
+        return res
